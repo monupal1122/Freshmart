@@ -251,7 +251,7 @@ const Shop = () => {
                         className='w-16 h-16 object-cover'
                       />
                       {activeSubcategory === subcat._id && (
-                        <div className='absolute inset-0 bg-black bg-opacity-20'></div>
+                        <div className='absolute inset-0  '></div>
                       )}
                     </div>
                     <p className={`text-xs text-center mt-0.5 font-medium truncate ${
