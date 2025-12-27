@@ -1,0 +1,171 @@
+import { ChevronRight } from "lucide-react";
+import React, { useContext } from "react";
+import { CgClose } from "react-icons/cg";
+import { GiShoppingBag } from "react-icons/gi";
+import { LuNotebookText } from "react-icons/lu";
+import { MdDeliveryDining } from "react-icons/md";
+import { AuthContext } from "../context/AuthContext";
+import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const CartComp = ({ isOpen, onClose }) => {
+  const { cart, setCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (!user) {
+      toast.error("Please login first to proceed with checkout");
+      navigate('/login');
+      onClose();
+      return;
+    }
+    navigate('/address');
+    onClose();
+  }
+     
+
+
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <div
+      className={`fixed top-0 right-0 h-full w-[400px] bg-gray-100 shadow-lg z-50 transform ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } transition-transform duration-300 flex flex-col`}
+    >
+      {/* Header - Fixed */}
+      <div className="p-4 bg-gray-100 border-b border-gray-200">
+        <h2 className="text-xl font-bold flex justify-between items-center">
+          My Cart
+          <button onClick={onClose} className="text-red-500 hover:text-red-700 transition">
+            <CgClose size={24} />
+          </button>
+        </h2>
+      </div>
+
+      {/* Scrollable Content Area */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {cart.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full text-center">
+            <div className="text-6xl mb-4"></div>
+            <p className="text-gray-600 font-medium">Your Cart is empty</p>
+            <p className="text-sm text-gray-500 mt-2">Add items to get started</p>
+          </div>
+        ) : (
+          <>
+            {/* Cart Items */}
+            <div className="space-y-3">
+              {cart.map((item) => (
+                <div
+                  key={item._id}
+                  className="flex items-center gap-4 p-3 bg-white rounded-lg shadow-sm"
+                >
+                  <img
+                    src={item.images?.[0] || item.image}
+                    alt={item.name}
+                    className="w-16 h-16 object-cover rounded border"
+                  />
+
+                  <div className="flex justify-between w-full items-center">
+                    <div className="flex-1">
+                      <h3 className="text-sm font-medium line-clamp-2">{item.name}</h3>
+                      <p className="text-gray-800 font-semibold">₹{item.price}</p>
+                    </div>
+
+                    <div className="flex items-center bg-green-600 text-white rounded-md px-3 py-1 gap-3">
+                      <button
+                        onClick={() => decreaseQuantity(item._id)}
+                        className="hover:bg-green-700 px-1 rounded"
+                      >
+                        -
+                      </button>
+                      <span className="font-medium">{item.quantity}</span>
+                      <button
+                        onClick={() => increaseQuantity(item._id)}
+                        className="hover:bg-green-700 px-1 rounded"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bill Details */}
+            <div className="bg-white rounded-lg p-4 shadow-sm space-y-2">
+              <h1 className="text-gray-800 font-bold text-lg mb-3">Bill details</h1>
+              
+              <div className="flex justify-between items-center py-1">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <LuNotebookText />
+                  Items total
+                </h1>
+                <p className="font-medium">₹{totalPrice}</p>
+              </div>
+              
+              <div className="flex justify-between items-center py-1">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <MdDeliveryDining />
+                  Delivery charge
+                </h1>
+                <p className="text-green-600 font-medium">
+                  <span className="text-gray-400 line-through mr-1">₹25</span> 
+                  FREE
+                </p>
+              </div>
+              
+              <div className="flex justify-between items-center py-1">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <GiShoppingBag />
+                  Handling charge
+                </h1>
+                <p className="text-green-600 font-medium">₹5</p>
+              </div>
+              
+              <div className="flex justify-between items-center pt-3 border-t border-gray-200">
+                <h1 className="font-bold text-lg">Grand total</h1>
+                <p className="font-bold text-lg text-green-600">₹{totalPrice + 5}</p>
+              </div>
+            </div>
+
+            {/* Cancellation Policy */}
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <h1 className="font-semibold text-gray-800 mb-2">Cancellation Policy</h1>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Orders cannot be cancelled once packed for delivery. In case of
+                unexpected delays, a refund will be provided, if applicable.
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Footer - Fixed (Checkout Button) */}
+      {cart.length > 0 && (
+        <div className="p-4 bg-white border-t border-gray-200 shadow-lg">
+          <button
+            onClick={handleCheckout}
+            className="bg-green-600 text-white w-full py-3 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-green-700 transition-colors shadow-md"
+          >
+            <div className="text-left">
+              <h1 className="font-bold text-lg">₹{totalPrice + 5}</h1>
+              <h1 className="text-gray-100 text-sm">TOTAL</h1>
+            </div>
+            <div className="flex gap-2 items-center font-semibold">
+              <h1 className="text-base">Proceed to Payment</h1>
+              <ChevronRight className="w-5 h-5" />
+            </div>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CartComp;
