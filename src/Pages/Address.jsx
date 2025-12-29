@@ -242,7 +242,7 @@ console.log("response",response);
                 isDefault: false,
               });
             }}
-            className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-green-800 to-emerald-800 text-white px-2 py-1 rounded-xl hover:from-green-600 hover:to-emerald-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
             {showForm ? "Cancel" : "+ Add New Address"}
           </button>
