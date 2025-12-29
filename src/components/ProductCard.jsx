@@ -31,13 +31,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 cursor-pointer"
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
       onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+      <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden w-full">
         <img
           src={
             Array.isArray(product.images)
@@ -116,7 +116,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Product Info */}
-      <div className="p-4 space-y-2">
+      <div className="p-3 sm:p-4 space-y-2">
         {(product.category?.name || product.subcategory?.name) && (
           <div className="flex items-center gap-2 flex-wrap">
             {product.category?.name && (
@@ -132,11 +132,11 @@ const ProductCard = ({ product }) => {
           </div>
         )}
 
-        <h3 className="font-bold text-gray-900 line-clamp-2 min-h-[2.5rem] group-hover:text-emerald-600 transition-colors text-sm md:text-base">
+        <h3 className="font-bold text-gray-900 line-clamp-2 min-h-[2.5rem] group-hover:text-emerald-600 transition-colors text-xs sm:text-sm md:text-base">
           {product.name}
         </h3>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-xs sm:text-sm">
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
@@ -156,10 +156,10 @@ const ProductCard = ({ product }) => {
           <p className="text-xs text-gray-600 font-medium">📦 {product.quantity}</p>
         )}
 
-        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+        <div className="flex flex-col xs:flex-row items-center justify-between pt-2 border-t border-gray-100 gap-2 xs:gap-0">
           <div className="flex flex-col">
             <div className="flex items-baseline gap-2">
-              <span className="text-xl md:text-2xl font-bold text-emerald-600">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-600">
                 ₹{product.price}
               </span>
               {product.originalPrice && (
@@ -174,11 +174,10 @@ const ProductCard = ({ product }) => {
               </span>
             )}
           </div>
-          
           <button
             onClick={addToCart}
             disabled={product.stock === 0}
-            className={`p-2.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110 ${
+            className={`p-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110 ${
               product.stock === 0
                 ? "bg-gray-300 cursor-not-allowed"
                 : "bg-emerald-500 hover:bg-emerald-600 text-white"

@@ -100,9 +100,9 @@ console.log("data iddar hai ",data);
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-4'>
-      <div className='bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden'>
-        <div className='flex justify-between items-center p-6 border-b'>
+    <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4'>
+      <div className='bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[95vh] overflow-hidden flex flex-col'>
+        <div className='flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 border-b gap-2 sm:gap-0'>
           <h2 className='text-2xl font-bold'>My Account</h2>
           <button
             onClick={onClose}
@@ -114,9 +114,9 @@ console.log("data iddar hai ",data);
           </button>
         </div>
 
-        <div className='flex h-[600px]'>
+        <div className='flex flex-col sm:flex-row h-auto sm:h-[600px]'>
           {/* Sidebar */}
-          <div className='w-64 bg-gray-50 p-6 border-r'>
+          <div className='w-full sm:w-64 bg-gray-50 p-4 sm:p-6 border-b sm:border-b-0 sm:border-r flex-shrink-0'>
             <div className='space-y-2'>
               <button
                 onClick={() => setActiveTab('profile')}
@@ -163,22 +163,22 @@ console.log("data iddar hai ",data);
           </div>
 
           {/* Content */}
-          <div className='flex-1 p-6 overflow-y-auto'>
+          <div className='flex-1 p-4 sm:p-6 overflow-y-auto min-h-[200px]'>
             {activeTab === 'profile' && (
               <div>
-                <h3 className='text-xl font-semibold mb-6'>Profile Information</h3>
+                <h3 className='text-lg sm:text-xl font-semibold mb-4 sm:mb-6'>Profile Information</h3>
                 <div className='space-y-4'>
                   <div>
-                    <label className='block text-sm font-medium text-gray-700 mb-1'>Name</label>
-                    <p className='text-gray-900 bg-gray-50 px-3 py-2 rounded-md'>{user.username}</p>
+                    <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Name</label>
+                    <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md break-words'>{user.username}</p>
                   </div>
                   <div>
-                    <label className='block text-sm font-medium text-gray-700 mb-1'>Email</label>
-                    <p className='text-gray-900 bg-gray-50 px-3 py-2 rounded-md'>{user.email}</p>
+                    <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Email</label>
+                    <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md break-words'>{user.email}</p>
                   </div>
                   <div>
-                    <label className='block text-sm font-medium text-gray-700 mb-1'>Member Since</label>
-                    <p className='text-gray-900 bg-gray-50 px-3 py-2 rounded-md'>
+                    <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Member Since</label>
+                    <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md'>
                       {new Date(user.createdAt || Date.now()).toLocaleDateString('en-IN')}
                     </p>
                   </div>
@@ -188,8 +188,8 @@ console.log("data iddar hai ",data);
 
             {activeTab === 'orders' && (
               <div>
-                <div className='flex justify-between items-center mb-6'>
-                  <h3 className='text-xl font-semibold'>Recent Orders</h3>
+                <div className='flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-2 sm:gap-0'>
+                  <h3 className='text-lg sm:text-xl font-semibold'>Recent Orders</h3>
                   <button
                     onClick={() => {
                       onClose()
@@ -214,8 +214,8 @@ console.log("data iddar hai ",data);
                 ) : (
                   <div className='space-y-4'>
                    {orders.map((order) => (
-  <div key={order._id} className='border rounded-lg p-4'>
-    <div className='flex justify-between items-start mb-3'>
+  <div key={order._id} className='border rounded-lg p-3 sm:p-4'>
+    <div className='flex flex-col sm:flex-row justify-between items-start mb-2 sm:mb-3 gap-2 sm:gap-0'>
       <div>
         <p className='font-medium'>Order #{order._id.slice(-8)}</p>
         <p className='text-sm text-gray-600'>
@@ -228,7 +228,7 @@ console.log("data iddar hai ",data);
     </div>
     
     {/* Overlapping Product Images */}
-    <div className='flex items-center -space-x-3 mb-3'>
+    <div className='flex items-center -space-x-3 mb-2 sm:mb-3'>
       {order.items.slice(0, 4).map((item, index) => (
         <div
           key={index}
@@ -249,11 +249,11 @@ console.log("data iddar hai ",data);
       )}
     </div>
     
-    <div className='flex justify-between items-center'>
-      <p className='text-sm text-gray-600'>
+    <div className='flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-0'>
+      <p className='text-xs sm:text-sm text-gray-600'>
         {order.items.length} item{order.items.length > 1 ? 's' : ''}
       </p>
-      <p className='font-semibold'>₹{order.totalAmount}</p>
+      <p className='font-semibold text-sm sm:text-base'>₹{order.totalAmount}</p>
     </div>
   </div>
 ))}
@@ -264,8 +264,8 @@ console.log("data iddar hai ",data);
 
             {activeTab === 'addresses' && (
               <div>
-                <div className='flex justify-between items-center mb-6'>
-                  <h3 className='text-xl font-semibold'>My Addresses</h3>
+                <div className='flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-2 sm:gap-0'>
+                  <h3 className='text-lg sm:text-xl font-semibold'>My Addresses</h3>
                   <button
                     onClick={() => {
                       onClose()
@@ -290,10 +290,10 @@ console.log("data iddar hai ",data);
                 ) : (
                   <div className='space-y-4'>
                     {addresses.map((address) => (
-                      <div key={address._id} className='border rounded-lg p-4'>
-                        <div className='flex justify-between items-start'>
+                      <div key={address._id} className='border rounded-lg p-3 sm:p-4'>
+                        <div className='flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-0'>
                           <div>
-                            <div className='flex items-center gap-2 mb-2'>
+                            <div className='flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 mb-1 sm:mb-2'>
                               {/* <p className='text-gray-900 bg-white-800 px-3 py-2'>{address.userId}</p> */}
                               {/* <p className='font-medium'>{address.userId}</p><br/> */}
                               <p className='font-medium'>{address.fullAddress}</p>
