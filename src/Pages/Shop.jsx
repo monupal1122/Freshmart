@@ -319,7 +319,7 @@ const Shop = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className='w-full md:ml-72 pt-[120px] md:pt-0'>
+          <div className='w-full md:ml-72  md:pt-0'>
             {/* Top Bar - Current Subcategory Name */}
             <div className='bg-gradient-to-r from-green-800 to-emerald-900 shadow-lg px-4 py-2 md:px-4 md:py-4 md:sticky md:top-0 z-20'>
               <h1 className='text-2xl md:text-3xl font-bold text-white'>

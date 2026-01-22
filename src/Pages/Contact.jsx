@@ -5,8 +5,8 @@ import React from 'react'
 const Contact = () => {
   return (
     <div className='bg-gray-100 '>
-      <div className="min-h-screen max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2  items-center justify-center p-4 mt-16 md:mt-0">
-        <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md mb-6">
+      <div className="min-h-screen max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2  items-center justify-center p-4">
+        <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md mb-6 mt-7">
           <h2 className="text-2xl font-bold text-center text-green-600">Contact Freshmart</h2>
           <p className="text-gray-600 text-center mt-2">We would love to hear from you!</p>
 
@@ -31,7 +31,7 @@ const Contact = () => {
         </div>
 
       
-        <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md mb-6">
+        <div className="bg-white shadow-lg rounded-lg  w-full max-w-md mb-4 p-6 mr-7">
           <h2 className="text-2xl font-semibold mb-6 text-green-600">Contact Information</h2>
 
           <div className="space-y-6">

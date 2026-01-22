@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
-        <section className='relative bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white mt-1 md:mt-0 overflow-hidden'>
+        <section className='relative bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white overflow-hidden'>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full"></div>

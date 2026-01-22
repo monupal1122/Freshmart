@@ -223,7 +223,7 @@ console.log("response",response);
 
   return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl m-7">
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-bold text-gray-800 mb-2">Delivery Addresses</h1>

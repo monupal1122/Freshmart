@@ -27,7 +27,7 @@ const values = [
 const About = () => {
   return (
     <div className="bg-gray-100">
-      <div className="max-w-6xl mx-auto py-12 px-4 mt-16">
+      <div className="max-w-6xl mx-auto py-12 px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4 text-green-700">About FreshMart</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

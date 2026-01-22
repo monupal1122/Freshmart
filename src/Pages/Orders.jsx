@@ -65,7 +65,7 @@ console.log("orders###",orders);
 
   return (
     <div className='min-h-screen bg-gray-50 py-8 px-4'>
-      <div className='max-w-4xl mx-auto'>
+      <div className='max-w-4xl m-5'>
         <h1 className='text-3xl font-bold mb-8'>My Orders</h1>
 
         {loading ? (

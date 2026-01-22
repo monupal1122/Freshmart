@@ -457,7 +457,7 @@ const AccountModal = ({ isOpen, onClose }) => {
                                   <span className={`inline-block mt-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-semibold uppercase ${
                                     address.type === 'home' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'
                                   }`}>
-                                    {address.type}
+                                    {address.label}
                                   </span>
                                 </div>
                               </div>

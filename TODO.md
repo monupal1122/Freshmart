@@ -1,8 +1,7 @@
-# TODO List for Fixing Cart Error and Adding setCart in ProductDetailsPage
+# TODO List for Fixing Navbar Overlapping Content
 
 ## Tasks
-- [x] Fix handleAddToCart in ProductDetailsPage.jsx to properly update cart array (check existing product, increment quantity or add new item)
-- [x] Add safety check in CartComp.jsx to ensure cart is an array before using reduce
-- [ ] Test adding items to cart from ProductDetailsPage
-- [ ] Verify cart display and total calculation in CartComp
-- [ ] Ensure localStorage persistence works
+- [x] Update src/App.jsx to change padding from pt-1 to pt-16 sm:pt-20 md:pt-24 lg:pt-28
+- [x] Remove mt-1 md:mt-0 from src/components/Hero.jsx
+- [x] Remove mt-16 md:mt-0 from src/Pages/Contact.jsx
+- [x] Remove mt-16 from src/Pages/About.jsx

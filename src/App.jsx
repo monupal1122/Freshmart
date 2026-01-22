@@ -24,7 +24,7 @@ const Layout = () => {
     <>
       {!hideNavbar && <Navbar />}
 
-      <div className={`${!hideNavbar ? 'pt-1' : ''}`}>
+      <div className={`${!hideNavbar ? 'pt-1 sm:pt-20 md:pt-15 lg:pt-10' : ''}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
