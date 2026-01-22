@@ -35,13 +35,11 @@ const Shop = () => {
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch subcategories');
           }
-<<<<<<< HEAD
+
           // Filter active subcategories
           const activeSubcategories = data.filter(sub => sub.status !== false);
           setSubcategoriesData(activeSubcategories);
-=======
-          setSubcategoriesData(data);
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
           console.log("Fetched categories:", data);
 
           if (data.length > 0) {
@@ -82,13 +80,10 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
-<<<<<<< HEAD
         // Filter active products
         const activeProducts = data.filter(product => product.status !== false);
         setAllProducts(activeProducts);
-=======
-        setAllProducts(data);
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
         console.log("Fetched products:", data);
       } else {
         console.log("Error fetching products:", data.message);
@@ -109,14 +104,11 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
-<<<<<<< HEAD
         const products = Array.isArray(data) ? data : data.products || [];
         // Filter active products
         const activeProducts = products.filter(product => product.status !== false);
         setAllProducts(activeProducts);
-=======
-        setAllProducts(Array.isArray(data) ? data : data.products || []);
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
         console.log("Fetched all products:", data);
       } else {
         console.log("Error fetching all products:", data.message);
@@ -183,7 +175,7 @@ const Shop = () => {
         </div>
         <button
           onClick={(e) => {
-            e.stopPropagation(); // Prevent navigation when clicking add to cart
+            e.stopPropagation();
             if (!user) {
               toast.error('Please login to add items to cart');
               return;
@@ -192,7 +184,6 @@ const Shop = () => {
             const existingItem = cart.find(item => item._id === product._id);
 
             if (existingItem) {
-              // Update quantity if item already exists
               const updatedCart = cart.map(item =>
                 item._id === product._id
                   ? { ...item, quantity: item.quantity + 1 }
@@ -201,7 +192,6 @@ const Shop = () => {
               setCart(updatedCart);
               toast.success(`${product.name} quantity updated in cart!`);
             } else {
-              // Add new item to cart
               const newItem = { ...product, quantity: 1 };
               setCart([...cart, newItem]);
               toast.success(`${product.name} added to cart!`);
@@ -270,11 +260,7 @@ const Shop = () => {
                         className='w-16 h-16 object-cover'
                       />
                       {activeSubcategory === subcat._id && (
-<<<<<<< HEAD
                         <div className='absolute inset-0 bg-black bg-opacity-20'></div>
-=======
-                        <div className='absolute inset-0  '></div>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                       )}
                     </div>
                     <p className={`text-xs text-center mt-0.5 font-medium truncate ${
@@ -316,7 +302,7 @@ const Shop = () => {
                       alt={subcat.name}
                       className='w-16 h-16 object-cover'
                       onError={(e) => {
-                        e.target.src = '/empty.jpg'; // Fallback to local placeholder
+                        e.target.src = '/empty.jpg';
                       }}
                     />
                   </div>
@@ -333,11 +319,7 @@ const Shop = () => {
           </div>
 
           {/* Main Content Area */}
-<<<<<<< HEAD
           <div className='w-full md:ml-72 pt-[120px] md:pt-0'>
-=======
-          <div className='w-full md:ml-72 pt-[0px] md:pt-0'>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
             {/* Top Bar - Current Subcategory Name */}
             <div className='bg-gradient-to-r from-green-800 to-emerald-900 shadow-lg px-4 py-2 md:px-4 md:py-4 md:sticky md:top-0 z-20'>
               <h1 className='text-2xl md:text-3xl font-bold text-white'>
@@ -375,7 +357,7 @@ const Shop = () => {
                     <div className='flex items-center justify-between'>
                       <div className='flex items-center space-x-3'>
                         <div className='bg-green-100 p-2 rounded-full'>
-                          <span className='text-green-600 text-lg'></span>
+                          <span className='text-green-600 text-lg'>🛒</span>
                         </div>
                         <div>
                           <h3 className='font-semibold text-gray-800'>
@@ -409,7 +391,7 @@ const Shop = () => {
                 </>
               ) : (
                 <div className='flex flex-col items-center justify-center h-96'>
-                  <div className='text-8xl mb-6 animate-bounce'></div>
+                  <div className='text-8xl mb-6 animate-bounce'>📦</div>
                   <h3 className='text-3xl font-semibold text-gray-600 mb-4'>No products found</h3>
                   <p className='text-xl text-gray-500 mb-8 text-center max-w-md'>
                     {filteredSubcategories.length > 0
