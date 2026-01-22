@@ -35,8 +35,9 @@ const FeaturedProducts = () => {
       
       // Check if the response has a 'products' property or is an array directly
       const products = Array.isArray(json) ? json : json.products || [];
-      
-      setProducts(products);
+      // Filter active products
+      const activeProducts = products.filter(product => product.status !== false);
+      setProducts(activeProducts);
       console.log("Products set:", products.length);
       
     } catch (error) {

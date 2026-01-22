@@ -79,7 +79,9 @@ const Category = () => {
           "https://grocery-backend-3pow.onrender.com/api/categories"
         );
         const data = await response.json();
-        setCategory(data);
+        // Filter active categories
+        const activeCategories = data.filter(cat => cat.status !== false);
+        setCategory(activeCategories);
         console.log("Fetched categories:", data);
       } catch (error) {
         console.log("Error fetching categories:", error);

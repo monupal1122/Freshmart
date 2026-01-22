@@ -35,7 +35,9 @@ const Shop = () => {
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch subcategories');
           }
-          setSubcategoriesData(data);
+          // Filter active subcategories
+          const activeSubcategories = data.filter(sub => sub.status !== false);
+          setSubcategoriesData(activeSubcategories);
           console.log("Fetched categories:", data);
 
           if (data.length > 0) {
@@ -76,7 +78,9 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setAllProducts(data);
+        // Filter active products
+        const activeProducts = data.filter(product => product.status !== false);
+        setAllProducts(activeProducts);
         console.log("Fetched products:", data);
       } else {
         console.log("Error fetching products:", data.message);
@@ -97,7 +101,10 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setAllProducts(Array.isArray(data) ? data : data.products || []);
+        const products = Array.isArray(data) ? data : data.products || [];
+        // Filter active products
+        const activeProducts = products.filter(product => product.status !== false);
+        setAllProducts(activeProducts);
         console.log("Fetched all products:", data);
       } else {
         console.log("Error fetching all products:", data.message);
