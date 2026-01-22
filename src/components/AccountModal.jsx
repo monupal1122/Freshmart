@@ -100,9 +100,16 @@ console.log("data iddar hai ",data);
   if (!isOpen) return null
 
   return (
+<<<<<<< HEAD
     <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-4'>
       <div className='bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden'>
         <div className='flex justify-between items-center p-6 border-b'>
+=======
+    <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4'>
+      <div className='bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden flex flex-col'>
+        {/* Fixed Header */}
+        <div className='flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 border-b gap-2 sm:gap-0 flex-shrink-0'>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
           <h2 className='text-2xl font-bold'>My Account</h2>
           <button
             onClick={onClose}
@@ -114,10 +121,17 @@ console.log("data iddar hai ",data);
           </button>
         </div>
 
+<<<<<<< HEAD
         <div className='flex h-[600px]'>
           {/* Sidebar */}
           <div className='w-64 bg-gray-50 p-6 border-r'>
             <div className='space-y-2'>
+=======
+        <div className='flex flex-col sm:flex-row flex-1 overflow-hidden'>
+          {/* Sidebar - Scrollable on mobile */}
+          <div className='w-full sm:w-64 bg-gray-50 border-b sm:border-b-0 sm:border-r flex-shrink-0 overflow-y-auto'>
+            <div className='p-4 sm:p-6 space-y-2'>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
               <button
                 onClick={() => setActiveTab('profile')}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
@@ -162,6 +176,7 @@ console.log("data iddar hai ",data);
             </div>
           </div>
 
+<<<<<<< HEAD
           {/* Content */}
           <div className='flex-1 p-6 overflow-y-auto'>
             {activeTab === 'profile' && (
@@ -313,6 +328,157 @@ console.log("data iddar hai ",data);
                 )}
               </div>
             )}
+=======
+          {/* Content - Scrollable */}
+          <div className='flex-1 overflow-y-auto'>
+            <div className='p-4 sm:p-6'>
+              {activeTab === 'profile' && (
+                <div>
+                  <h3 className='text-lg sm:text-xl font-semibold mb-4 sm:mb-6'>Profile Information</h3>
+                  <div className='space-y-4'>
+                    <div>
+                      <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Name</label>
+                      <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md break-words'>{user.username}</p>
+                    </div>
+                    <div>
+                      <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Email</label>
+                      <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md break-words'>{user.email}</p>
+                    </div>
+                    <div>
+                      <label className='block text-xs sm:text-sm font-medium text-gray-700 mb-1'>Member Since</label>
+                      <p className='text-gray-900 bg-gray-50 px-2 sm:px-3 py-2 rounded-md'>
+                        {new Date(user.createdAt || Date.now()).toLocaleDateString('en-IN')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'orders' && (
+                <div>
+                  <div className='flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-2 sm:gap-0'>
+                    <h3 className='text-lg sm:text-xl font-semibold'>Recent Orders</h3>
+                    <button
+                      onClick={() => {
+                        onClose()
+                        navigate('/orders')
+                      }}
+                      className='text-green-600 hover:text-green-700 font-medium text-sm sm:text-base'
+                    >
+                      View All Orders
+                    </button>
+                  </div>
+
+                  {loading ? (
+                    <div className='text-center py-8'>
+                      <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto'></div>
+                      <p className='mt-2 text-gray-600'>Loading orders...</p>
+                    </div>
+                  ) : orders.length === 0 ? (
+                    <div className='text-center py-8'>
+                      <p className='text-gray-600'>No orders yet</p>
+                    </div>
+                  ) : (
+                    <div className='space-y-4 pb-4'>
+                      {orders.map((order) => (
+                        <div key={order._id} className='border rounded-lg p-3 sm:p-4'>
+                          <div className='flex flex-col sm:flex-row justify-between items-start mb-2 sm:mb-3 gap-2 sm:gap-0'>
+                            <div>
+                              <p className='font-medium'>Order #{order._id.slice(-8)}</p>
+                              <p className='text-sm text-gray-600'>
+                                {new Date(order.createdAt).toLocaleDateString('en-IN')}
+                              </p>
+                            </div>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
+                              {order.status}
+                            </span>
+                          </div>
+                          
+                          {/* Overlapping Product Images */}
+                          <div className='flex items-center -space-x-3 mb-2 sm:mb-3'>
+                            {order.items.slice(0, 4).map((item, index) => (
+                              <div
+                                key={index}
+                                className='relative w-12 h-12 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-sm'
+                                style={{ zIndex: order.items.length - index }}
+                              >
+                                <img
+                                  src={item.productId.images?.[0]}
+                                  alt={item.product?.name || 'Product'}
+                                  className='w-full h-full object-cover'
+                                />
+                              </div>
+                            ))}
+                            {order.items.length > 4 && (
+                              <div className='relative w-12 h-12 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center shadow-sm text-xs font-medium text-gray-600'>
+                                +{order.items.length - 4}
+                              </div>
+                            )}
+                          </div>
+                          
+                          <div className='flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-0'>
+                            <p className='text-xs sm:text-sm text-gray-600'>
+                              {order.items.length} item{order.items.length > 1 ? 's' : ''}
+                            </p>
+                            <p className='font-semibold text-sm sm:text-base'>₹{order.totalAmount}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'addresses' && (
+                <div>
+                  <div className='flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-2 sm:gap-0'>
+                    <h3 className='text-lg sm:text-xl font-semibold'>My Addresses</h3>
+                    <button
+                      onClick={() => {
+                        onClose()
+                        navigate('/address')
+                      }}
+                      className='bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm sm:text-base'
+                    >
+                      Add New Address
+                    </button>
+                  </div>
+
+                  {loading ? (
+                    <div className='text-center py-8'>
+                      <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto'></div>
+                      <p className='mt-2 text-gray-600'>Loading addresses...</p>
+                    </div>
+                  ) : addresses.length === 0 ? (
+                    <div className='text-center py-8'>
+                      <p className='text-gray-600'>No addresses added yet</p>
+                    </div>
+                  ) : (
+                    <div className='space-y-4 pb-4'>
+                      {addresses.map((address) => (
+                        <div key={address._id} className='border rounded-lg p-3 sm:p-4'>
+                          <div className='flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-0'>
+                            <div className='w-full'>
+                              <div className='flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 mb-1 sm:mb-2'>
+                                <p className='font-medium break-words'>{address.fullAddress}</p>
+                                <span className='bg-gray-100 px-2 py-1 rounded text-xs uppercase flex-shrink-0'>
+                                  {address.type}
+                                </span>
+                              </div>
+                              <p className='text-gray-600 text-sm mb-1'>{address.phone}</p>
+                              <p className='text-gray-600 text-sm break-words'>
+                                {address.street}, {address.city}, {address.state} - {address.pincode}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
           </div>
         </div>
       </div>
@@ -320,4 +486,8 @@ console.log("data iddar hai ",data);
   )
 }
 
+<<<<<<< HEAD
 export default AccountModal
+=======
+export default AccountModal
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc

@@ -35,9 +35,13 @@ const Shop = () => {
           if (!response.ok) {
             throw new Error(data.message || 'Failed to fetch subcategories');
           }
+<<<<<<< HEAD
           // Filter active subcategories
           const activeSubcategories = data.filter(sub => sub.status !== false);
           setSubcategoriesData(activeSubcategories);
+=======
+          setSubcategoriesData(data);
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
           console.log("Fetched categories:", data);
 
           if (data.length > 0) {
@@ -78,9 +82,13 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
+<<<<<<< HEAD
         // Filter active products
         const activeProducts = data.filter(product => product.status !== false);
         setAllProducts(activeProducts);
+=======
+        setAllProducts(data);
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
         console.log("Fetched products:", data);
       } else {
         console.log("Error fetching products:", data.message);
@@ -101,10 +109,14 @@ const Shop = () => {
       const data = await response.json();
 
       if (response.ok) {
+<<<<<<< HEAD
         const products = Array.isArray(data) ? data : data.products || [];
         // Filter active products
         const activeProducts = products.filter(product => product.status !== false);
         setAllProducts(activeProducts);
+=======
+        setAllProducts(Array.isArray(data) ? data : data.products || []);
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
         console.log("Fetched all products:", data);
       } else {
         console.log("Error fetching all products:", data.message);
@@ -258,7 +270,11 @@ const Shop = () => {
                         className='w-16 h-16 object-cover'
                       />
                       {activeSubcategory === subcat._id && (
+<<<<<<< HEAD
                         <div className='absolute inset-0 bg-black bg-opacity-20'></div>
+=======
+                        <div className='absolute inset-0  '></div>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                       )}
                     </div>
                     <p className={`text-xs text-center mt-0.5 font-medium truncate ${
@@ -317,7 +333,11 @@ const Shop = () => {
           </div>
 
           {/* Main Content Area */}
+<<<<<<< HEAD
           <div className='w-full md:ml-72 pt-[120px] md:pt-0'>
+=======
+          <div className='w-full md:ml-72 pt-[0px] md:pt-0'>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
             {/* Top Bar - Current Subcategory Name */}
             <div className='bg-gradient-to-r from-green-800 to-emerald-900 shadow-lg px-4 py-2 md:px-4 md:py-4 md:sticky md:top-0 z-20'>
               <h1 className='text-2xl md:text-3xl font-bold text-white'>

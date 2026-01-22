@@ -24,8 +24,30 @@ const CartComp = ({ isOpen, onClose }) => {
     navigate('/address');
     onClose();
   }
+<<<<<<< HEAD
      
 
+=======
+
+  const increaseQuantity = (id) => {
+    setCart(cart.map(item => 
+      item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+    ));
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart(cart.map(item => {
+      if (item._id === id) {
+        if (item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else {
+          return null;
+        }
+      }
+      return item;
+    }).filter(Boolean));
+  };
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -34,6 +56,7 @@ const CartComp = ({ isOpen, onClose }) => {
 
   return (
     <div
+<<<<<<< HEAD
       className={`fixed top-0 right-0 h-full w-[400px] bg-gray-100 shadow-lg z-50 transform ${
         isOpen ? "translate-x-0" : "translate-x-full"
       } transition-transform duration-300 flex flex-col`}
@@ -41,6 +64,16 @@ const CartComp = ({ isOpen, onClose }) => {
       {/* Header - Fixed */}
       <div className="p-4 bg-gray-100 border-b border-gray-200">
         <h2 className="text-xl font-bold flex justify-between items-center">
+=======
+      className={`fixed top-0 right-0 h-full w-full max-w-[400px] sm:w-[400px] bg-gray-100 shadow-lg z-50 transform ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } transition-transform duration-300 flex flex-col`}
+      style={{ maxWidth: '100vw' }}
+    >
+      {/* Header - Fixed */}
+      <div className="p-3 sm:p-4 bg-gray-100 border-b border-gray-200 flex-shrink-0">
+        <h2 className="text-lg sm:text-xl font-bold flex justify-between items-center">
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
           My Cart
           <button onClick={onClose} className="text-red-500 hover:text-red-700 transition">
             <CgClose size={24} />
@@ -49,15 +82,23 @@ const CartComp = ({ isOpen, onClose }) => {
       </div>
 
       {/* Scrollable Content Area */}
+<<<<<<< HEAD
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {cart.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <div className="text-6xl mb-4"></div>
+=======
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3">
+        {cart.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full text-center">
+            <div className="text-6xl mb-4">🛒</div>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
             <p className="text-gray-600 font-medium">Your Cart is empty</p>
             <p className="text-sm text-gray-500 mt-2">Add items to get started</p>
           </div>
         ) : (
           <>
+<<<<<<< HEAD
             {/* Cart Items */}
             <div className="space-y-3">
               {cart.map((item) => (
@@ -88,27 +129,87 @@ const CartComp = ({ isOpen, onClose }) => {
                       <button
                         onClick={() => increaseQuantity(item._id)}
                         className="hover:bg-green-700 px-1 rounded"
+=======
+            {/* Cart Items - Row Layout */}
+            <div className="space-y-3 pb-2">
+              {cart.map((item) => (
+                <div
+                  key={item._id}
+                  className="flex items-center gap-3 p-2 sm:p-3 bg-white rounded-lg shadow-sm"
+                >
+                  {/* Product Image */}
+                  <img
+                    src={item.images?.[0] || item.image}
+                    alt={item.name}
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded border flex-shrink-0"
+                  />
+
+                  {/* Product Details */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-sm sm:text-base font-medium line-clamp-2 mb-1">
+                      {item.name}
+                    </h3>
+                    <p className="text-green-600 font-bold text-base sm:text-lg">
+                      ₹{item.price}
+                    </p>
+                    
+                    {/* Quantity Controls */}
+                    <div className="flex items-center bg-green-600 text-white rounded-md px-2 py-1 gap-2 mt-2 w-fit">
+                      <button
+                        onClick={() => decreaseQuantity(item._id)}
+                        className="hover:bg-green-700 px-2 rounded text-lg font-bold"
+                      >
+                        -
+                      </button>
+                      <span className="font-medium px-2 text-sm sm:text-base min-w-[20px] text-center">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() => increaseQuantity(item._id)}
+                        className="hover:bg-green-700 px-2 rounded text-lg font-bold"
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                       >
                         +
                       </button>
                     </div>
                   </div>
+<<<<<<< HEAD
+=======
+
+                  {/* Item Total */}
+                  <div className="text-right flex-shrink-0">
+                    <p className="font-bold text-sm sm:text-base text-gray-800">
+                      ₹{item.price * item.quantity}
+                    </p>
+                    <p className="text-xs text-gray-500">Total</p>
+                  </div>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                 </div>
               ))}
             </div>
 
             {/* Bill Details */}
+<<<<<<< HEAD
             <div className="bg-white rounded-lg p-4 shadow-sm space-y-2">
               <h1 className="text-gray-800 font-bold text-lg mb-3">Bill details</h1>
               
               <div className="flex justify-between items-center py-1">
                 <h1 className="flex gap-2 items-center text-gray-700">
                   <LuNotebookText />
+=======
+            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm space-y-2">
+              <h1 className="text-gray-800 font-bold text-base sm:text-lg mb-2 sm:mb-3">Bill details</h1>
+              
+              <div className="flex justify-between items-center py-1 text-xs sm:text-sm">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <LuNotebookText className="text-base" />
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                   Items total
                 </h1>
                 <p className="font-medium">₹{totalPrice}</p>
               </div>
               
+<<<<<<< HEAD
               <div className="flex justify-between items-center py-1">
                 <h1 className="flex gap-2 items-center text-gray-700">
                   <MdDeliveryDining />
@@ -116,28 +217,57 @@ const CartComp = ({ isOpen, onClose }) => {
                 </h1>
                 <p className="text-green-600 font-medium">
                   <span className="text-gray-400 line-through mr-1">₹25</span> 
+=======
+              <div className="flex justify-between items-center py-1 text-xs sm:text-sm">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <MdDeliveryDining className="text-base" />
+                  Delivery charge
+                </h1>
+                <p className="text-green-600 font-medium">
+                  <span className="text-gray-400 line-through mr-1 text-xs">₹25</span> 
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                   FREE
                 </p>
               </div>
               
+<<<<<<< HEAD
               <div className="flex justify-between items-center py-1">
                 <h1 className="flex gap-2 items-center text-gray-700">
                   <GiShoppingBag />
+=======
+              <div className="flex justify-between items-center py-1 text-xs sm:text-sm">
+                <h1 className="flex gap-2 items-center text-gray-700">
+                  <GiShoppingBag className="text-base" />
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                   Handling charge
                 </h1>
                 <p className="text-green-600 font-medium">₹5</p>
               </div>
               
+<<<<<<< HEAD
               <div className="flex justify-between items-center pt-3 border-t border-gray-200">
                 <h1 className="font-bold text-lg">Grand total</h1>
                 <p className="font-bold text-lg text-green-600">₹{totalPrice + 5}</p>
+=======
+              <div className="flex justify-between items-center pt-2 sm:pt-3 border-t border-gray-200 text-sm sm:text-base">
+                <h1 className="font-bold">Grand total</h1>
+                <p className="font-bold text-green-600 text-lg">₹{totalPrice + 5}</p>
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
               </div>
             </div>
 
             {/* Cancellation Policy */}
+<<<<<<< HEAD
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <h1 className="font-semibold text-gray-800 mb-2">Cancellation Policy</h1>
               <p className="text-sm text-gray-600 leading-relaxed">
+=======
+            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
+              <h1 className="font-semibold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">
+                Cancellation Policy
+              </h1>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
                 Orders cannot be cancelled once packed for delivery. In case of
                 unexpected delays, a refund will be provided, if applicable.
               </p>
@@ -148,6 +278,7 @@ const CartComp = ({ isOpen, onClose }) => {
 
       {/* Footer - Fixed (Checkout Button) */}
       {cart.length > 0 && (
+<<<<<<< HEAD
         <div className="p-4 bg-white border-t border-gray-200 shadow-lg">
           <button
             onClick={handleCheckout}
@@ -160,6 +291,20 @@ const CartComp = ({ isOpen, onClose }) => {
             <div className="flex gap-2 items-center font-semibold">
               <h1 className="text-base">Proceed to Payment</h1>
               <ChevronRight className="w-5 h-5" />
+=======
+        <div className="p-3 sm:p-4 bg-white border-t border-gray-200 shadow-lg flex-shrink-0">
+          <button
+            onClick={handleCheckout}
+            className="bg-green-600 text-white w-full py-2 sm:py-3 px-3 sm:px-4 rounded-lg flex justify-between items-center cursor-pointer hover:bg-green-700 transition-colors shadow-md"
+          >
+            <div className="text-left">
+              <h1 className="font-bold text-base sm:text-lg">₹{totalPrice + 5}</h1>
+              <h1 className="text-gray-100 text-xs">TOTAL</h1>
+            </div>
+            <div className="flex gap-2 items-center font-semibold">
+              <h1 className="text-sm sm:text-base">Proceed to Payment</h1>
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+>>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
             </div>
           </button>
         </div>
