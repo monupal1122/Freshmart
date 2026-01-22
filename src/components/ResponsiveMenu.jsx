@@ -21,7 +21,7 @@ const ResponsiveMenu = ({isNavOpen, setIsNavOpen}) => {
       </div>
       <div>
         <h1>
-            Made with ❤️ by Rohit
+            Made with ❤️ by Monu_pal
         </h1>
       </div>
     </div>

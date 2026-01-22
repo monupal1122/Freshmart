@@ -16,87 +16,73 @@ const Navbar = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false)
   const { cart } = useContext(CartContext)
   const { user } = useContext(AuthContext)
+  
   const onClose = ()=>{
     setIsOpen(false)
   }
+  
   const toggleNav = ()=>{
     setIsNavOpen(!isNavOpen)
   }
+  
   isOpen ? document.body.style.overflow = "hidden": document.body.style.overflow = "auto"
+  
   return (
     <div>
-<<<<<<< HEAD
-      <div className='mx-auto flex justify-between items-center px-6 py-3 fixed top-0 z-20 bg-green-100 w-full border border-gray-100 shadow-xl lg:px-[180px]'>
-           {/* logo section */}
-           <Link to={'/'}><img src={Logo} alt="" className='md:w-52 w-40'/></Link>
-           {/* menu section */}
-           <nav className='flex gap-5'>
-            <ul className='text-xl font-semibold md:flex items-center gap-7 hidden'>
-=======
       <div className='mx-auto flex justify-between items-center px-3 sm:px-6 py-2 sm:py-3 fixed top-0 z-20 bg-green-100 w-full border border-gray-100 shadow-xl lg:px-[180px]'>
-           {/* logo section */}
-           <Link to={'/'}><img src={Logo} alt="" className='w-32 sm:w-40 md:w-52'/></Link>
-           {/* menu section */}
-           <nav className='flex gap-3 sm:gap-5 items-center'>
-            <ul className='text-base sm:text-xl font-semibold md:flex items-center gap-4 sm:gap-7 hidden'>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
-                <Link to={'/'}><li>Home</li></Link>
-                <Link to={'/shop'}><li>Shop</li></Link>
-                <Link to={'/about'}><li>About</li></Link>
-                <Link to={'/contact'}><li>Contact</li></Link>
-            </ul>
-            <Link className='relative' onClick={()=>setIsOpen(true)}>
-<<<<<<< HEAD
-            <ShoppingCart className='w-6 h-6'/>
-=======
+        {/* logo section */}
+        <Link to={'/'}>
+          <img src={Logo} alt="" className='w-32 sm:w-40 md:w-52'/>
+        </Link>
+        
+        {/* menu section */}
+        <nav className='flex gap-3 sm:gap-5 items-center'>
+          <ul className='text-base sm:text-xl font-semibold md:flex items-center gap-4 sm:gap-7 hidden'>
+            <Link to={'/'}><li>Home</li></Link>
+            <Link to={'/shop'}><li>Shop</li></Link>
+            <Link to={'/about'}><li>About</li></Link>
+            <Link to={'/contact'}><li>Contact</li></Link>
+          </ul>
+          
+          <Link className='relative' onClick={()=>setIsOpen(true)}>
             <ShoppingCart className='w-5 h-5 sm:w-6 sm:h-6'/>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
-            <span className='absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center'>{cart.length}</span>
+            <span className='absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center'>
+              {cart.length}
+            </span>
+          </Link>
+          
+          {user ? (
+            <button
+              onClick={() => setIsAccountOpen(true)}
+              className='bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-green-700 transition-colors text-xs sm:text-base'
+            >
+              Account
+            </button>
+          ) : (
+            <Link
+              to='/login'
+              className='bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-green-700 transition-colors inline-block text-xs sm:text-base'
+            >
+              Login
             </Link>
-           {
-            user ? (
-              <button
-                onClick={() => setIsAccountOpen(true)}
-<<<<<<< HEAD
-                className='bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors'
-=======
-                className='bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-green-700 transition-colors text-xs sm:text-base'
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
-              >
-                Account
-              </button>
-            ) : (
-              <Link
-                to='/login'
-<<<<<<< HEAD
-                className='bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors inline-block'
-=======
-                className='bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-green-700 transition-colors inline-block text-xs sm:text-base'
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
-              >
-                Login
-              </Link>
-            )
-           }
-           {
-<<<<<<< HEAD
-            isNavOpen ? <HiMenuAlt3 className='h-7 w-7 md:hidden' onClick={toggleNav}/>:<HiMenuAlt1 className='h-7 w-7 md:hidden' onClick={toggleNav}/>
-=======
-            isNavOpen ? <HiMenuAlt3 className='h-6 w-6 sm:h-7 sm:w-7 md:hidden' onClick={toggleNav}/>:<HiMenuAlt1 className='h-6 w-6 sm:h-7 sm:w-7 md:hidden' onClick={toggleNav}/>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
-           }
-           </nav>
+          )}
+          
+          {isNavOpen ? (
+            <HiMenuAlt3 className='h-6 w-6 sm:h-7 sm:w-7 md:hidden' onClick={toggleNav}/>
+          ) : (
+            <HiMenuAlt1 className='h-6 w-6 sm:h-7 sm:w-7 md:hidden' onClick={toggleNav}/>
+          )}
+        </nav>
       </div>
-      {
-        isNavOpen && <ResponsiveMenu isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>
-      }
-      {
-        isOpen && (
-          <div className='fixed top-0 left-0 w-full h-full bg-black/70 z-40' onClick={()=>setIsOpen(false)}></div>
-        )
-      }
-     <CartComp isOpen={isOpen} onClose={onClose}/>
-     <AccountModal isOpen={isAccountOpen} onClose={() => setIsAccountOpen(false)} />
+      
+      {isNavOpen && <ResponsiveMenu isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>}
+      
+      {isOpen && (
+        <div className='fixed top-0 left-0 w-full h-full bg-black/70 z-40' onClick={()=>setIsOpen(false)}></div>
+      )}
+      
+      <CartComp isOpen={isOpen} onClose={onClose}/>
+      <AccountModal isOpen={isAccountOpen} onClose={() => setIsAccountOpen(false)} />
     </div>
   )
 }

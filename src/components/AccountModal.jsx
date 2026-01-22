@@ -100,16 +100,16 @@ console.log("data iddar hai ",data);
   if (!isOpen) return null
 
   return (
-<<<<<<< HEAD
+
     <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-4'>
       <div className='bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden'>
         <div className='flex justify-between items-center p-6 border-b'>
-=======
+
     <div className='fixed inset-0 backdrop-blur-[9px] bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4'>
       <div className='bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] sm:max-h-[95vh] overflow-hidden flex flex-col'>
         {/* Fixed Header */}
         <div className='flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 border-b gap-2 sm:gap-0 flex-shrink-0'>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
           <h2 className='text-2xl font-bold'>My Account</h2>
           <button
             onClick={onClose}
@@ -121,17 +121,17 @@ console.log("data iddar hai ",data);
           </button>
         </div>
 
-<<<<<<< HEAD
+
         <div className='flex h-[600px]'>
           {/* Sidebar */}
           <div className='w-64 bg-gray-50 p-6 border-r'>
             <div className='space-y-2'>
-=======
+
         <div className='flex flex-col sm:flex-row flex-1 overflow-hidden'>
           {/* Sidebar - Scrollable on mobile */}
           <div className='w-full sm:w-64 bg-gray-50 border-b sm:border-b-0 sm:border-r flex-shrink-0 overflow-y-auto'>
             <div className='p-4 sm:p-6 space-y-2'>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
               <button
                 onClick={() => setActiveTab('profile')}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
@@ -176,7 +176,7 @@ console.log("data iddar hai ",data);
             </div>
           </div>
 
-<<<<<<< HEAD
+
           {/* Content */}
           <div className='flex-1 p-6 overflow-y-auto'>
             {activeTab === 'profile' && (
@@ -328,7 +328,7 @@ console.log("data iddar hai ",data);
                 )}
               </div>
             )}
-=======
+
           {/* Content - Scrollable */}
           <div className='flex-1 overflow-y-auto'>
             <div className='p-4 sm:p-6'>
@@ -478,7 +478,7 @@ console.log("data iddar hai ",data);
                 </div>
               )}
             </div>
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
           </div>
         </div>
       </div>
@@ -486,8 +486,8 @@ console.log("data iddar hai ",data);
   )
 }
 
-<<<<<<< HEAD
+
 export default AccountModal
-=======
+
 export default AccountModal
->>>>>>> 00a446d2f1bf77bef900972ecbaa0a42b9b56acc
+
