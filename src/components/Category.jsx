@@ -84,8 +84,6 @@ const Category = () => {
         const activeCategories = data.filter(cat => cat.status !== false);
         setCategory(activeCategories);
 
-        setCategory(data);
-
         console.log("Fetched categories:", data);
       } catch (error) {
         console.log("Error fetching categories:", error);
