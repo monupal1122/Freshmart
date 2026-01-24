@@ -114,7 +114,7 @@ export default function ProductDetailsPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header/Breadcrumb */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 py-4 mt-6">
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <button onClick={() => navigate('/')} className="hover:text-emerald-600">Home</button>
             <ChevronRight className="w-4 h-4" />
@@ -125,7 +125,7 @@ export default function ProductDetailsPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Left - Images */}
           <div className="space-y-4">
