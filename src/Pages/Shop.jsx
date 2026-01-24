@@ -357,7 +357,7 @@ const Shop = () => {
                     <div className='flex items-center justify-between'>
                       <div className='flex items-center space-x-3'>
                         <div className='bg-green-100 p-2 rounded-full'>
-                          <span className='text-green-600 text-lg'>🛒</span>
+                          <span className='text-green-600 text-lg'></span>
                         </div>
                         <div>
                           <h3 className='font-semibold text-gray-800'>

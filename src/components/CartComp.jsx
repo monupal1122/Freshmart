@@ -70,7 +70,7 @@ const CartComp = ({ isOpen, onClose }) => {
       <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3">
         {cart.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <div className="text-6xl mb-4">🛒</div>
+            <div className="text-6xl mb-4"></div>
             <p className="text-gray-600 font-medium">Your Cart is empty</p>
             <p className="text-sm text-gray-500 mt-2">Add items to get started</p>
           </div>

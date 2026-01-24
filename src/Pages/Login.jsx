@@ -85,7 +85,7 @@ const Login = () => {
                   onError={(e) => {
                     // Fallback to emoji if image fails
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="text-8xl">🛒</div>';
+                    e.target.parentElement.innerHTML = '<div class="text-8xl"></div>';
                   }}
                 />
               </div>
